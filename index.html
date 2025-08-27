@@ -953,6 +953,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -1072,6 +1073,74 @@
             color: var(--primary);
         }
 
+        /* Profit Platforms Section */
+        .profit-platforms {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .profit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .profit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .profit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profit-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .profit-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .profit-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .profit-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .profit-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .profit-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .profit-links a i {
+            margin-right: 5px;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
@@ -1169,6 +1238,16 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+
+            .profit-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profit-links a {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1189,8 +1268,7 @@
                     <li><a href="#daily-math"><i class="fas fa-video"></i> Math Videos</a></li>
                     <li><a href="#"><i class="fas fa-palette"></i> Design Courses</a></li>
                     <li><a href="#"><i class="fas fa-code"></i> Development</a></li>
-                    <li><a href="main.html"><i class="fas fa-tools"></i> Profit
-                            Platforms</a></li>
+                    <li><a href="#profit-platforms"><i class="fas fa-tools"></i> Profit Platforms</a></li>
                     <li><a href="#" class="btn btn-math"><i class="fas fa-user-plus"></i> Sign Up</a></li>
                 </ul>
             </nav>
@@ -1581,6 +1659,96 @@
         </div>
     </section>
 
+    <!-- Profit Platforms Section -->
+    <section class="profit-platforms" id="profit-platforms">
+        <div class="container">
+            <h2 class="section-title">Profit Platforms</h2>
+            <p class="section-subtitle">Explore these platforms to monetize your skills and earn income</p>
+
+            <div class="profit-grid">
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fab fa-youtube"></i></div>
+                    <h3>YouTube</h3>
+                    <p>Earn revenue from ads, channel memberships, Super Chat, and YouTube Premium revenue</p>
+                    <div class="profit-links">
+                        <a href="https://www.youtube.com/creators/" target="_blank"><i
+                                class="fas fa-external-link-alt"></i> YouTube Creators</a>
+                        <a href="https://en.wikipedia.org/wiki/YouTube" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fab fa-google"></i></div>
+                    <h3>Google AdSense</h3>
+                    <p>Earn money by displaying targeted ads on your website, blog, or YouTube videos</p>
+                    <div class="profit-links">
+                        <a href="https://www.google.com/adsense/" target="_blank"><i
+                                class="fas fa-external-link-alt"></i> Official Site</a>
+                        <a href="https://en.wikipedia.org/wiki/AdSense" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>E-commerce</h3>
+                    <p>Sell digital products, courses, templates, and physical goods through various platforms</p>
+                    <div class="profit-links">
+                        <a href="https://www.shopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Shopify</a>
+                        <a href="https://www.etsy.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Etsy</a>
+                        <a href="https://en.wikipedia.org/wiki/E-commerce" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Freelance Platforms</h3>
+                    <p>Offer your skills and services to clients worldwide on freelance marketplaces</p>
+                    <div class="profit-links">
+                        <a href="https://www.upwork.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Upwork</a>
+                        <a href="https://www.fiverr.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Fiverr</a>
+                        <a href="https://en.wikipedia.org/wiki/Freelance_marketplace" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fas fa-book"></i></div>
+                    <h3>Online Courses</h3>
+                    <p>Create and sell courses on popular e-learning platforms to share your expertise</p>
+                    <div class="profit-links">
+                        <a href="https://www.udemy.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Udemy</a>
+                        <a href="https://www.coursera.org/teach" target="_blank"><i
+                                class="fas fa-external-link-alt"></i> Coursera</a>
+                        <a href="https://en.wikipedia.org/wiki/Massive_open_online_course" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fas fa-pencil-alt"></i></div>
+                    <h3>Content Creation</h3>
+                    <p>Monetize your content through blogging, affiliate marketing, and sponsored content</p>
+                    <div class="profit-links">
+                        <a href="https://www.wordpress.org/" target="_blank"><i class="fab fa-wordpress"></i>
+                            WordPress</a>
+                        <a href="https://www.medium.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Medium</a>
+                        <a href="https://en.wikipedia.org/wiki/Content_creation" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
@@ -1702,10 +1870,10 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-video"></i> Math Videos</a></li>
+                        <li><a href="#daily-math"><i class="fas fa-video"></i> Math Videos</a></li>
                         <li><a href="#"><i class="fas fa-palette"></i> Design Courses</a></li>
                         <li><a href="#"><i class="fas fa-code"></i> Development</a></li>
-                        <li><a href="#"><i class="fas fa-tools"></i> Resources</a></li>
+                        <li><a href="#profit-platforms"><i class="fas fa-tools"></i> Profit Platforms</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1782,7 +1950,7 @@
 
         // Simple animation on scroll
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.course-card, .stat-item, .testimonial-card, .resource-card, .pricing-plan, .project-card, .resource-link-card');
+            const elements = document.querySelectorAll('.course-card, .stat-item, .testimonial-card, .resource-card, .pricing-plan, .project-card, .resource-link-card, .profit-card');
 
             elements.forEach(element => {
                 const position = element.getBoundingClientRect();
@@ -1796,7 +1964,7 @@
         };
 
         // Initialize elements for animation
-        document.querySelectorAll('.course-card, .stat-item, .testimonial-card, .resource-card, .pricing-plan, .project-card, .resource-link-card').forEach(element => {
+        document.querySelectorAll('.course-card, .stat-item, .testimonial-card, .resource-card, .pricing-plan, .project-card, .resource-link-card, .profit-card').forEach(element => {
             element.style.opacity = 0;
             element.style.transform = 'translateY(20px)';
             element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';

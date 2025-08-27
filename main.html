@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Platforms - Monetize YouTube, Canva, GitHub & Blogs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --primary-dark: #1a252f;
+            --secondary: #e74c3c;
+            --secondary-dark: #c0392b;
+            --accent: #3498db;
+            --accent-dark: #2980b9;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --youtube: #FF0000;
+            --canva: #00C4CC;
+            --github: #181717;
+            --blogging: #FF5722;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(120deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            background-color: var(--secondary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Platform Section */
+        .platforms {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .platform-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 40px 30px;
+            border-top: 5px solid var(--accent);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .platform-card.youtube {
+            border-top-color: var(--youtube);
+        }
+
+        .platform-card.canva {
+            border-top-color: var(--canva);
+        }
+
+        .platform-card.github {
+            border-top-color: var(--github);
+        }
+
+        .platform-card.blogging {
+            border-top-color: var(--blogging);
+        }
+
+        .platform-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .youtube-icon {
+            color: var(--youtube);
+        }
+
+        .canva-icon {
+            color: var(--canva);
+        }
+
+        .github-icon {
+            color: var(--github);
+        }
+
+        .blogging-icon {
+            color: var(--blogging);
+        }
+
+        .platform-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .platform-card p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+        }
+
+        .income {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 25px;
+        }
+
+        /* Strategy Section */
+        .strategies {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .strategies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .strategy-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .strategy-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .strategy-content {
+            padding: 25px;
+        }
+
+        .strategy-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .strategy-content p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .strategy-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .difficulty {
+            display: flex;
+            align-items: center;
+        }
+
+        .difficulty i {
+            color: var(--warning);
+            margin-right: 5px;
+        }
+
+        /* Income Calculator */
+        .calculator {
+            padding: 100px 0;
+            background: linear-gradient(120deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .calculator-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            margin-top: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .results h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .income-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--success);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background-color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-column p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: white;
+                transition: all 0.3s ease;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                z-index: 1000;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                margin-bottom: 10px;
+                display: block;
+                width: 100%;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-money-bill-wave"></i>Profit<span>Platforms</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#platforms">Platforms</a></li>
+                    <li><a href="#strategies">Strategies</a></li>
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#" class="btn">Start Earning</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Monetize Your Digital Presence</h1>
+            <p>Earn money from YouTube, Canva, GitHub, and Blogs with proven revenue strategies</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn">Start Earning Now</a>
+                <a href="#" class="btn btn-outline">View Strategies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Section -->
+    <section class="platforms" id="platforms">
+        <div class="container">
+            <div class="section-title">
+                <h2>Earning Platforms</h2>
+                <p>Maximize your revenue across these powerful platforms</p>
+            </div>
+
+            <div class="platforms-grid">
+                <div class="platform-card youtube">
+                    <div class="platform-icon youtube-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>Generate income through ads, sponsorships, and affiliate marketing with engaging video content.
+                    </p>
+                    <div class="income">Earnings: $500 - $10,000+/mo</div>
+                    <a href="#" class="btn">Monetize YouTube</a>
+                </div>
+
+                <div class="platform-card canva">
+                    <div class="platform-icon canva-icon">
+                        <i class="fab fa-canva"></i>
+                    </div>
+                    <h3>Canva</h3>
+                    <p>Sell templates, designs, and digital products through Canva's marketplace and your own channels.
+                    </p>
+                    <div class="income">Earnings: $300 - $5,000+/mo</div>
+                    <a href="#" class="btn">Sell Designs</a>
+                </div>
+
+                <div class="platform-card github">
+                    <div class="platform-icon github-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Monetize your coding skills through sponsorships, paid repositories, and developer services.</p>
+                    <div class="income">Earnings: $400 - $8,000+/mo</div>
+                    <a href="#" class="btn">Code for Profit</a>
+                </div>
+
+                <div class="platform-card blogging">
+                    <div class="platform-icon blogging-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h3>Blogging</h3>
+                    <p>Create profitable content through advertising, affiliate marketing, and digital product sales.
+                    </p>
+                    <div class="income">Earnings: $200 - $7,000+/mo</div>
+                    <a href="#" class="btn">Start Blogging</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="strategies" id="strategies">
+        <div class="container">
+            <div class="section-title">
+                <h2>Revenue Strategies</h2>
+                <p>Proven methods to generate income from each platform</p>
+            </div>
+
+            <div class="strategies-grid">
+                <div class="strategy-card">
+                    <div class="strategy-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');">
+                    </div>
+                    <div class="strategy-content">
+                        <h3>YouTube Ad Revenue Optimization</h3>
+                        <p>Maximize your YouTube earnings through strategic content creation and audience engagement.
+                        </p>
+                        <div class="strategy-meta">
+                            <div class="difficulty">
+                                <i class="fas fa-star"></i>
+                                <span>Intermediate</span>
+                            </div>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <div class="strategy-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1634942536746-46b9a6de9231?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80');">
+                    </div>
+                    <div class="strategy-content">
+                        <h3>Canva Template Sales</h3>
+                        <p>Create and sell professional templates on Canva Marketplace and through social media.</p>
+                        <div class="strategy-meta">
+                            <div class="difficulty">
+                                <i class="fas fa-star"></i>
+                                <span>Beginner</span>
+                            </div>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <div class="strategy-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
+                    </div>
+                    <div class="strategy-content">
+                        <h3>GitHub Sponsorships</h3>
+                        <p>Get paid for your open-source contributions and code repositories through GitHub Sponsors.
+                        </p>
+                        <div class="strategy-meta">
+                            <div class="difficulty">
+                                <i class="fas fa-star"></i>
+                                <span>Advanced</span>
+                            </div>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Income Calculator -->
+    <section class="calculator" id="calculator">
+        <div class="container calculator-container">
+            <div class="section-title">
+                <h2>Earnings Calculator</h2>
+                <p>Estimate your potential income from each platform</p>
+            </div>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="platform">Select Platform</label>
+                    <select id="platform">
+                        <option value="youtube">YouTube</option>
+                        <option value="canva">Canva</option>
+                        <option value="github">GitHub</option>
+                        <option value="blogging">Blogging</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Time Investment (hours per week)</label>
+                    <input type="number" id="time" min="1" max="40" value="10">
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Your Experience Level</label>
+                    <select id="experience">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+
+                <button class="btn" onclick="calculateEarnings()">Calculate Earnings</button>
+
+                <div class="results">
+                    <h4>Estimated Monthly Earnings</h4>
+                    <div class="income-amount" id="earnings">$0</div>
+                    <p>Based on your inputs and current market rates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container cta-container">
+            <h2>Start Earning Today</h2>
+            <p>Join our premium membership to access exclusive resources, templates, and personalized guidance to
+                maximize your earnings across all platforms.</p>
+            <a href="#" class="btn">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Profit Platforms</h3>
+                    <p>Maximize your earnings from YouTube, Canva, GitHub, and blogging with our proven strategies and
+                        resources.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Platforms</h3>
+                    <ul>
+                        <li><a href="#">YouTube Monetization</a></li>
+                        <li><a href="#">Canva Templates</a></li>
+                        <li><a href="#">GitHub Sponsors</a></li>
+                        <li><a href="#">Blogging Revenue</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">E-Books</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Tools</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for weekly money-making tips and strategies</p>
+                    <form>
+                        <input type="email" placeholder="Your email address"
+                            style="width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 5px; border: none;">
+                        <button class="btn" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Profit Platforms. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+
+            // Change icon based on menu state
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Earnings calculator function
+        function calculateEarnings() {
+            const platform = document.getElementById('platform').value;
+            const time = parseInt(document.getElementById('time').value);
+            const experience = document.getElementById('experience').value;
+
+            // Base rates per hour based on platform and experience
+            const rates = {
+                youtube: { beginner: 10, intermediate: 25, advanced: 50 },
+                canva: { beginner: 8, intermediate: 20, advanced: 40 },
+                github: { beginner: 15, intermediate: 35, advanced: 70 },
+                blogging: { beginner: 5, intermediate: 15, advanced: 30 }
+            };
+
+            // Calculate estimated monthly earnings
+            const hourlyRate = rates[platform][experience];
+            const weeklyEarnings = time * hourlyRate;
+            const monthlyEarnings = weeklyEarnings * 4;
+
+            // Display results
+            document.getElementById('earnings').textContent = '$' + monthlyEarnings.toLocaleString();
+        }
+
+        // Initialize calculator with default values
+        calculateEarnings();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Mastery - MathDesign</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #3a0ca3;
+            --secondary: #4361ee;
+            --accent: #f72585;
+            --gold: #ffd166;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --golden-ratio: 1.618;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7ff 0%, #e6e9ff 100%);
+            color: var(--dark);
+            line-height: var(--golden-ratio);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(rgba(58, 12, 163, 0.8), rgba(58, 12, 163, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%234361ee" width="100" height="100"/><path fill="%233a0ca3" d="M0 0L100 100" stroke-width="0"/></svg>');
+            color: white;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: calc(36px * var(--golden-ratio));
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #e0e0ff;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(247, 37, 133, 0.3);
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(247, 37, 133, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Course Content */
+        .content-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-image {
+            height: 200px;
+            background: linear-gradient(45deg, #4361ee, #3a0ca3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content-details {
+            padding: 25px;
+        }
+
+        .content-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .content-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        /* Golden Ratio Visual */
+        .golden-ratio-visual {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .ratio-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .golden-rectangle {
+            width: 100%;
+            padding-bottom: 61.8%;
+            /* 1/1.618 ≈ 0.618 */
+            background: var(--gold);
+            position: relative;
+            margin: 0 auto;
+            border: 2px solid var(--dark);
+        }
+
+        .spiral {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom right, transparent 70%, rgba(0, 0, 0, 0.2) 70%);
+            border-radius: 0 0 100% 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 80px 0;
+            border-radius: 40px;
+            margin: 60px 0;
+        }
+
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            text-align: center;
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            margin: 60px 0;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 24px;
+            color: #6c757d;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+
+        /* Official Links */
+        .official-links {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 40px 0;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .link-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .link-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .link-card h3 i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .link-card a {
+            display: block;
+            color: #4361ee;
+            text-decoration: none;
+            margin: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .link-card a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: #adb5bd;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .features,
+            .content-cards,
+            .testimonial-cards,
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-calculator"></i>
+                    MathDesign
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Calculation Mastery</h1>
+            <p>Master the ancient secrets of Vedic Mathematics, the Golden Ratio, and Leonardo da Vinci's mathematical
+                genius</p>
+            <div>
+                <a href="#" class="cta-button">Enroll Now - $49.99</a>
+                <a href="#" class="cta-button secondary">Free Trial Lesson</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section container">
+        <h2 class="section-title">What You'll Master</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-compress-alt"></i>
+                </div>
+                <h3>Golden Ratio</h3>
+                <p>Discover the mathematical constant that appears throughout nature and art, and learn how to apply it
+                    in design and calculation.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Vedic Mathematics</h3>
+                <p>Learn ancient Indian techniques for mental calculation that make complex arithmetic problems simple
+                    to solve.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Da Vinci's Methods</h3>
+                <p>Explore how Leonardo da Vinci used mathematics in his art, inventions, and scientific explorations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Golden Ratio Visual -->
+    <section class="container">
+        <div class="golden-ratio-visual">
+            <h2>The Golden Ratio</h2>
+            <p>Approximately 1.618, often denoted by the Greek letter φ (phi)</p>
+            <div class="ratio-container">
+                <div class="golden-rectangle">
+                    <div class="spiral"></div>
+                </div>
+            </div>
+            <p style="margin-top: 20px;">This ratio appears in everything from seashells to galaxies, and of course, in
+                Leonardo da Vinci's works.</p>
+        </div>
+    </section>
+
+    <!-- Course Content -->
+    <section class="section container">
+        <h2 class="section-title">Course Content</h2>
+        <div class="content-cards">
+            <div class="content-card">
+                <div class="content-image">Vedic Math Basics</div>
+                <div class="content-details">
+                    <h3>Vedic Mathematics</h3>
+                    <p>Learn 16 sutras and 13 sub-sutras that make complex calculations simple.</p>
+                    <ul>
+                        <li>Mental calculation techniques</li>
+                        <li>Speed arithmetic</li>
+                        <li>Pattern recognition</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="content-image">Golden Ratio</div>
+                <div class="content-details">
+                    <h3>Golden Ratio Applications</h3>
+                    <p>Discover how φ appears in nature, art, architecture, and design.</p>
+                    <ul>
+                        <li>Mathematical properties</li>
+                        <li>Applications in design</li>
+                        <li>Fibonacci sequence</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="content-image">Da Vinci's Secrets</div>
+                <div class="content-details">
+                    <h3>Da Vinci's Mathematics</h3>
+                    <p>Explore how Leonardo used mathematics in his work and inventions.</p>
+                    <ul>
+                        <li>Vitruvian Man proportions</li>
+                        <li>Perspective techniques</li>
+                        <li>Engineering calculations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Official Links Section -->
+    <section class="section container">
+        <h2 class="section-title">Official Resources & References</h2>
+        <div class="official-links">
+            <div class="links-grid">
+                <div class="link-card">
+                    <h3><i class="fas fa-book"></i> Golden Ratio</h3>
+                    <a href="https://en.wikipedia.org/wiki/Golden_ratio" target="_blank">Wikipedia - Golden Ratio</a>
+                    <a href="https://mathworld.wolfram.com/GoldenRatio.html" target="_blank">Wolfram MathWorld</a>
+                    <a href="https://www.mathsisfun.com/numbers/golden-ratio.html" target="_blank">Math is Fun - Golden
+                        Ratio</a>
+                    <a href="https://www.goldennumber.net/" target="_blank">The Golden Ratio Network</a>
+                </div>
+
+                <div class="link-card">
+                    <h3><i class="fas fa-calculator"></i> Vedic Mathematics</h3>
+                    <a href="https://en.wikipedia.org/wiki/Vedic_Mathematics_(book)" target="_blank">Wikipedia - Vedic
+                        Mathematics</a>
+                    <a href="https://www.vedicmaths.org/" target="_blank">Vedic Maths Academy</a>
+                    <a href="https://www.artofliving.org/us-en/vedic-mathematics" target="_blank">Art of Living - Vedic
+                        Math</a>
+                    <a href="https://www.vedicmathsindia.org/" target="_blank">Vedic Maths Forum India</a>
+                </div>
+
+                <div class="link-card">
+                    <h3><i class="fas fa-palette"></i> Leonardo da Vinci</h3>
+                    <a href="https://en.wikipedia.org/wiki/Leonardo_da_Vinci" target="_blank">Wikipedia - Leonardo da
+                        Vinci</a>
+                    <a href="https://www.leonardodavinci.net/" target="_blank">Leonardo da Vinci Official Site</a>
+                    <a href="https://www.mos.org/leonardo/" target="_blank">Museum of Science - Leonardo</a>
+                    <a href="https://www.britannica.com/biography/Leonardo-da-Vinci" target="_blank">Britannica - da
+                        Vinci</a>
+                </div>
+
+                <div class="link-card">
+                    <h3><i class="fas fa-laptop-code"></i> MathDesign</h3>
+                    <a href="https://github.com/mathdesign" target="_blank">GitHub Repository</a>
+                    <a href="https://mathdesign.io/docs" target="_blank">Documentation</a>
+                    <a href="https://mathdesign.io/blog" target="_blank">Blog & Tutorials</a>
+                    <a href="https://community.mathdesign.io" target="_blank">Community Forum</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">What Students Say</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "This course completely changed how I approach mathematics. The Vedic techniques are
+                        mind-blowing!"
+                    </div>
+                    <div class="testimonial-author">- Sarah J., Math Teacher</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I never understood the Golden Ratio until this course. Now I see it everywhere in nature and
+                        design."
+                    </div>
+                    <div class="testimonial-author">- Michael T., Designer</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The historical context about da Vinci made the mathematics come alive. Highly recommend this
+                        course!"
+                    </div>
+                    <div class="testimonial-author">- James L., History Student</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="container">
+        <div class="pricing">
+            <h2 class="section-title">Enroll in Calculation Mastery</h2>
+            <p>Master mathematics with our comprehensive course</p>
+            <div class="price"><span>$99.99</span> $49.99</div>
+            <p>One-time payment, lifetime access</p>
+            <a href="#" class="cta-button">Enroll Now</a>
+            <p style="margin-top: 20px; color: #6c757d;">30-day money-back guarantee</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About MathDesign</h3>
+                    <p>We provide high-quality courses in mathematics, design, and development to help you advance your
+                        career and achieve your goals.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" style="color: #adb5bd;">Home</a></p>
+                    <p><a href="#" style="color: #adb5bd;">Courses</a></p>
+                    <p><a href="#" style="color: #adb5bd;">Blog</a></p>
+                    <p><a href="#" style="color: #adb5bd;">Contact</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@mathdesign.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MathDesign. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Golden Ratio Visualization
+        document.addEventListener('DOMContentLoaded', function () {
+            const goldenRect = document.querySelector('.golden-rectangle');
+
+            goldenRect.addEventListener('click', function () {
+                this.classList.toggle('highlight');
+
+                // Animate the spiral
+                const spiral = document.querySelector('.spiral');
+                spiral.style.transition = 'all 1s ease';
+                spiral.style.transform = spiral.style.transform === 'scale(1.1)' ? 'scale(1)' : 'scale(1.1)';
+            });
+
+            // Animate elements on scroll
+            const animateOnScroll = function () {
+                const elements = document.querySelectorAll('.feature-card, .content-card, .testimonial-card, .link-card');
+
+                elements.forEach(element => {
+                    const position = element.getBoundingClientRect();
+
+                    // If element is in viewport
+                    if (position.top < window.innerHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Set initial state for animation
+            const features = document.querySelectorAll('.feature-card, .content-card, .testimonial-card, .link-card');
+            features.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.8s ease';
+            });
+
+            // Listen for scroll events
+            window.addEventListener('scroll', animateOnScroll);
+
+            // Trigger once on load
+            animateOnScroll();
+        });
+    </script>
+</body>
+
+</html>

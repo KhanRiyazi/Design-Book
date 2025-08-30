@@ -6,22 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Empower - Python & Machine Learning Mastery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
         :root {
             --primary: #2563eb;
-            --secondary: #3b82f6;
-            --accent: #f59e0b;
+            --primary-dark: #1e40af;
+            --primary-light: #3b82f6;
+            --secondary: #f59e0b;
+            --secondary-light: #fbbf24;
             --ai-color: #10b981;
+            --ai-dark: #059669;
             --light: #f8fafc;
             --dark: #1e293b;
-            --dark-blue: #1e40af;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #22c55e;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
@@ -39,13 +47,14 @@
 
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--dark-blue));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 20px 0;
+            padding: 16px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
         }
 
         nav {
@@ -59,11 +68,16 @@
             font-weight: 700;
             display: flex;
             align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
         }
 
         .logo i {
             margin-right: 10px;
-            color: var(--accent);
+            color: var(--secondary);
         }
 
         .nav-links {
@@ -72,18 +86,36 @@
         }
 
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 28px;
+            position: relative;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--secondary-light);
         }
 
         .user-actions {
@@ -95,9 +127,16 @@
         .search-bar {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50px;
             padding: 8px 15px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .search-bar:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .search-bar input {
@@ -106,6 +145,7 @@
             color: white;
             outline: none;
             width: 200px;
+            margin-left: 8px;
         }
 
         .search-bar input::placeholder {
@@ -113,65 +153,113 @@
         }
 
         .btn {
-            display: inline-block;
-            background: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary);
             color: white;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border: none;
             cursor: pointer;
+            gap: 8px;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+            background: var(--secondary-light);
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
         }
 
         .btn-ai {
             background: var(--ai-color);
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-ai:hover {
+            background: var(--ai-dark);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
-            background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%233b82f6" width="100" height="100"/><path fill="%232563eb" d="M0 0L100 100" stroke-width="0"/></svg>');
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(30, 64, 175, 0.9) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%233b82f6" width="100" height="100"/><path fill="%232563eb" d="M0 0L100 100" stroke-width="0"/></svg>');
             color: white;
             border-radius: 0 0 40px 40px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            font-weight: 800;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
             color: #e0e7ff;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Section Styles */
         .section {
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             color: var(--primary);
             position: relative;
+            font-weight: 700;
         }
 
         .section-title:after {
@@ -179,35 +267,36 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: var(--accent);
-            margin: 15px auto;
+            background: var(--secondary);
+            margin: 20px auto;
             border-radius: 2px;
         }
 
         /* Course Grid */
         .course-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
 
         .course-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
         }
 
         .course-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .course-image {
             height: 180px;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -215,18 +304,30 @@
             font-size: 24px;
             font-weight: bold;
             position: relative;
+            overflow: hidden;
+        }
+
+        .course-image:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .course-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--accent);
+            background: var(--secondary);
             color: white;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .course-details {
@@ -237,19 +338,26 @@
             font-size: 1.4rem;
             margin-bottom: 15px;
             color: var(--dark);
+            font-weight: 600;
         }
 
         .course-info {
             display: flex;
             justify-content: space-between;
             margin-bottom: 15px;
-            color: #64748b;
+            color: var(--gray);
             font-size: 0.9rem;
+        }
+
+        .course-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .progress-bar {
             height: 8px;
-            background: #e2e8f0;
+            background: var(--light-gray);
             border-radius: 4px;
             margin-bottom: 15px;
             overflow: hidden;
@@ -261,6 +369,31 @@
             border-radius: 4px;
             width: 0;
             transition: width 1s ease;
+            position: relative;
+        }
+
+        .progress:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+            z-index: 1;
+            background-size: 20px 20px;
+            animation: move 1s linear infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 20px 0;
+            }
         }
 
         /* Dashboard */
@@ -273,9 +406,9 @@
 
         .sidebar {
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--card-shadow);
             height: fit-content;
         }
 
@@ -284,6 +417,7 @@
             color: var(--primary);
             display: flex;
             align-items: center;
+            font-weight: 600;
         }
 
         .sidebar h3 i {
@@ -295,7 +429,7 @@
         }
 
         .sidebar-menu li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .sidebar-menu a {
@@ -303,32 +437,61 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 8px;
         }
 
         .sidebar-menu a:hover {
             color: var(--primary);
+            background: var(--light);
         }
 
         .sidebar-menu i {
-            margin-right: 10px;
+            margin-right: 12px;
             width: 20px;
             text-align: center;
+            color: var(--gray);
         }
 
         .main-content {
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--card-shadow);
         }
 
         .welcome-banner {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             padding: 25px;
-            border-radius: 15px;
+            border-radius: 16px;
             margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-banner:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            transform: rotate(30deg);
+        }
+
+        .welcome-banner h2 {
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-banner p {
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
         }
 
         .stats-grid {
@@ -340,30 +503,58 @@
 
         .stat-card {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 20px;
             text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
         }
 
         .stat-card i {
             font-size: 2rem;
             color: var(--primary);
             margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-card h3 {
             font-size: 2rem;
             margin-bottom: 5px;
             color: var(--dark);
+            font-weight: 700;
+        }
+
+        .stat-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
         }
 
         /* AI Empowerment Section */
         .ai-section {
-            background: linear-gradient(135deg, var(--ai-color), #059669);
+            background: linear-gradient(135deg, var(--ai-color), var(--ai-dark));
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             border-radius: 40px;
-            margin: 60px 0;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .ai-features {
@@ -375,29 +566,46 @@
 
         .ai-feature {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            border-radius: 16px;
             padding: 30px;
             text-align: center;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .ai-feature:hover {
             transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .ai-feature i {
             font-size: 3rem;
             margin-bottom: 20px;
             color: white;
+            background: linear-gradient(135deg, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ai-feature h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .ai-feature p {
+            opacity: 0.9;
+            font-size: 0.95rem;
         }
 
         /* Official Links Section */
         .official-links {
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             padding: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--card-shadow);
             margin: 40px 0;
         }
 
@@ -409,13 +617,15 @@
 
         .link-card {
             background: #f8f9fa;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 20px;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
         }
 
         .link-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
         }
 
         .link-card h3 {
@@ -423,33 +633,52 @@
             margin-bottom: 15px;
             display: flex;
             align-items: center;
+            font-weight: 600;
         }
 
         .link-card h3 i {
             margin-right: 10px;
-            color: var(--accent);
+            color: var(--secondary);
         }
 
         .link-card a {
-            display: block;
-            color: #4361ee;
+            display: flex;
+            align-items: center;
+            color: var(--primary-light);
             text-decoration: none;
-            margin: 8px 0;
-            transition: color 0.3s ease;
+            margin: 10px 0;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .link-card a i {
+            margin-right: 8px;
+            font-size: 0.8rem;
         }
 
         .link-card a:hover {
-            color: var(--accent);
-            text-decoration: underline;
+            color: var(--secondary);
+            transform: translateX(5px);
         }
 
         /* Footer */
         footer {
             background: var(--dark);
             color: white;
-            padding: 50px 0 20px;
-            margin-top: 60px;
+            padding: 70px 0 20px;
+            margin-top: 80px;
             border-radius: 40px 40px 0 0;
+            position: relative;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .footer-content {
@@ -457,17 +686,33 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-section h3 {
             font-size: 1.3rem;
             margin-bottom: 20px;
             color: var(--accent);
+            font-weight: 600;
         }
 
         .footer-section p {
             margin-bottom: 15px;
             color: #cbd5e1;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-light);
+            transform: translateX(5px);
         }
 
         .footer-bottom {
@@ -476,25 +721,205 @@
             border-top: 1px solid #334155;
             color: #94a3b8;
             font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .sidebar {
+                order: 2;
+            }
+
+            .main-content {
+                order: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .dashboard {
-                grid-template-columns: 1fr;
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .search-bar {
                 display: none;
             }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-features {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .user-actions {
+                gap: 10px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Code snippet styling */
+        .code-snippet {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            overflow-x: auto;
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace;
+            box-shadow: var(--card-shadow);
+        }
+
+        .code-snippet .keyword {
+            color: #ff6b6b;
+        }
+
+        .code-snippet .function {
+            color: #6bc6ff;
+        }
+
+        .code-snippet .string {
+            color: #a5ff90;
+        }
+
+        .code-snippet .comment {
+            color: #94a3b8;
+        }
+
+        /* Toggle switch */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .toggle-text {
+            margin-right: 10px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--light-gray);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--ai-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
         }
     </style>
 </head>
@@ -506,14 +931,17 @@
             <nav>
                 <div class="logo">
                     <i class="fas fa-robot"></i>
-                    AI Empower
+                    <a href="/index.html" style="text-decoration: none; color: inherit;">AI Empower</a>
+
+
+
                 </div>
                 <ul class="nav-links">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Courses</a></li>
-                    <li><a href="#">AI Tools</a></li>
+                    <!-- <li><a href="#">AI Tools</a></li>
                     <li><a href="#">Resources</a></li>
-                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Community</a></li> -->
                 </ul>
                 <div class="user-actions">
                     <div class="search-bar">
@@ -523,6 +951,9 @@
                     <a href="#" class="btn btn-outline">Login</a>
                     <a href="#" class="btn btn-ai">Sign Up Free</a>
                 </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
@@ -530,12 +961,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Master Python & Machine Learning with AI</h1>
-            <p>Leverage AI-powered learning tools to master Python, Machine Learning, and Data Science faster than ever
-                before</p>
-            <div>
-                <a href="#" class="btn btn-ai">Start AI-Powered Learning</a>
-                <a href="#" class="btn btn-outline">Explore Courses</a>
+            <div class="hero-content">
+                <h1>Master Python & Machine Learning with AI</h1>
+                <p>Leverage AI-powered learning tools to master Python, Machine Learning, and Data Science faster than
+                    ever before</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-ai"><i class="fas fa-brain"></i> Start AI-Powered Learning</a>
+                    <a href="#" class="btn btn-outline"><i class="fas fa-book-open"></i> Explore Courses</a>
+                </div>
             </div>
         </div>
     </section>
@@ -544,7 +977,7 @@
     <section class="section container">
         <h2 class="section-title">AI-Enhanced Learning Paths</h2>
         <div class="course-grid">
-            <div class="course-card">
+            <div class="course-card fade-in">
                 <div class="course-image">
                     <span>Python Basics</span>
                     <div class="course-badge">AI-Powered</div>
@@ -566,7 +999,7 @@
                 </div>
             </div>
 
-            <div class="course-card">
+            <div class="course-card fade-in">
                 <div class="course-image">
                     <span>Machine Learning</span>
                     <div class="course-badge">AI-Guided</div>
@@ -588,7 +1021,7 @@
                 </div>
             </div>
 
-            <div class="course-card">
+            <div class="course-card fade-in">
                 <div class="course-image">
                     <span>Deep Learning</span>
                     <div class="course-badge">AI-Driven</div>
@@ -617,22 +1050,22 @@
         <div class="container">
             <h2 class="section-title" style="color: white;">AI-Powered Learning Experience</h2>
             <div class="ai-features">
-                <div class="ai-feature">
+                <div class="ai-feature fade-in">
                     <i class="fas fa-brain"></i>
                     <h3>Adaptive Learning Paths</h3>
                     <p>AI algorithms customize your learning journey based on your progress and goals</p>
                 </div>
-                <div class="ai-feature">
+                <div class="ai-feature fade-in">
                     <i class="fas fa-robot"></i>
                     <h3>AI Code Assistant</h3>
                     <p>Get real-time suggestions and corrections as you write code</p>
                 </div>
-                <div class="ai-feature">
+                <div class="ai-feature fade-in">
                     <i class="fas fa-chart-line"></i>
                     <h3>Smart Progress Tracking</h3>
                     <p>AI analyzes your learning patterns to optimize your study schedule</p>
                 </div>
-                <div class="ai-feature">
+                <div class="ai-feature fade-in">
                     <i class="fas fa-graduation-cap"></i>
                     <h3>Personalized Projects</h3>
                     <p>Work on AI-generated projects tailored to your skill level and interests</p>
@@ -641,42 +1074,93 @@
         </div>
     </section>
 
+    <!-- Code Example Section -->
+    <section class="section container">
+        <h2 class="section-title">AI-Powered Code Assistance</h2>
+        <div class="toggle-container">
+            <span class="toggle-text">Without AI</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="aiToggle" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-text">With AI</span>
+        </div>
+
+        <div class="code-snippet">
+            <pre id="codeExample"><span class="keyword">def</span> <span class="function">calculate_fibonacci</span>(n):
+    <span class="comment"># Calculate Fibonacci sequence up to n numbers</span>
+    <span class="keyword">if</span> n &lt;= 0:
+        <span class="keyword">return</span> []
+    <span class="keyword">elif</span> n == 1:
+        <span class="keyword">return</span> [0]
+    <span class="keyword">elif</span> n == 2:
+        <span class="keyword">return</span> [0, 1]
+    
+    fib_sequence = [0, 1]
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(2, n):
+        next_num = fib_sequence[i-1] + fib_sequence[i-2]
+        fib_sequence.append(next_num)
+    
+    <span class="keyword">return</span> fib_sequence
+
+<span class="comment"># AI Suggestions:</span>
+<span class="comment"># 1. Add input validation for negative numbers</span>
+<span class="comment"># 2. Consider using memoization for large n values</span>
+<span class="comment"># 3. Add docstring for better documentation</span>
+</pre>
+        </div>
+    </section>
+
     <!-- Official Links Section -->
     <section class="section container">
         <h2 class="section-title">Official Resources & Documentation</h2>
         <div class="official-links">
             <div class="links-grid">
-                <div class="link-card">
+                <div class="link-card fade-in">
                     <h3><i class="fab fa-python"></i> Python Resources</h3>
-                    <a href="https://www.python.org/doc/" target="_blank">Python Official Documentation</a>
-                    <a href="https://www.python.org/downloads/" target="_blank">Python Downloads</a>
-                    <a href="https://pypi.org/" target="_blank">Python Package Index (PyPI)</a>
-                    <a href="https://docs.python.org/3/tutorial/" target="_blank">Python Tutorial</a>
+                    <a href="https://www.python.org/doc/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                        Python Official Documentation</a>
+                    <a href="https://www.python.org/downloads/" target="_blank"><i class="fas fa-download"></i> Python
+                        Downloads</a>
+                    <a href="https://pypi.org/" target="_blank"><i class="fas fa-box"></i> Python Package Index
+                        (PyPI)</a>
+                    <a href="https://docs.python.org/3/tutorial/" target="_blank"><i class="fas fa-graduation-cap"></i>
+                        Python Tutorial</a>
                 </div>
 
-                <div class="link-card">
+                <div class="link-card fade-in">
                     <h3><i class="fas fa-brain"></i> Machine Learning</h3>
-                    <a href="https://scikit-learn.org/stable/documentation.html" target="_blank">Scikit-Learn
-                        Documentation</a>
-                    <a href="https://www.tensorflow.org/api_docs" target="_blank">TensorFlow API Docs</a>
-                    <a href="https://pytorch.org/docs/stable/index.html" target="_blank">PyTorch Documentation</a>
-                    <a href="https://keras.io/api/" target="_blank">Keras API Reference</a>
+                    <a href="https://scikit-learn.org/stable/documentation.html" target="_blank"><i
+                            class="fas fa-book"></i> Scikit-Learn Documentation</a>
+                    <a href="https://www.tensorflow.org/api_docs" target="_blank"><i class="fas fa-code"></i> TensorFlow
+                        API Docs</a>
+                    <a href="https://pytorch.org/docs/stable/index.html" target="_blank"><i
+                            class="fas fa-book-open"></i> PyTorch Documentation</a>
+                    <a href="https://keras.io/api/" target="_blank"><i class="fas fa-cogs"></i> Keras API Reference</a>
                 </div>
 
-                <div class="link-card">
+                <div class="link-card fade-in">
                     <h3><i class="fas fa-chart-bar"></i> Data Science</h3>
-                    <a href="https://pandas.pydata.org/docs/" target="_blank">Pandas Documentation</a>
-                    <a href="https://numpy.org/doc/" target="_blank">NumPy Documentation</a>
-                    <a href="https://matplotlib.org/stable/contents.html" target="_blank">Matplotlib Documentation</a>
-                    <a href="https://seaborn.pydata.org/api.html" target="_blank">Seaborn API Reference</a>
+                    <a href="https://pandas.pydata.org/docs/" target="_blank"><i class="fas fa-table"></i> Pandas
+                        Documentation</a>
+                    <a href="https://numpy.org/doc/" target="_blank"><i class="fas fa-calculator"></i> NumPy
+                        Documentation</a>
+                    <a href="https://matplotlib.org/stable/contents.html" target="_blank"><i
+                            class="fas fa-chart-line"></i> Matplotlib Documentation</a>
+                    <a href="https://seaborn.pydata.org/api.html" target="_blank"><i class="fas fa-chart-area"></i>
+                        Seaborn API Reference</a>
                 </div>
 
-                <div class="link-card">
+                <div class="link-card fade-in">
                     <h3><i class="fas fa-robot"></i> AI Empowerment</h3>
-                    <a href="https://ai.google/education/" target="_blank">Google AI Education</a>
-                    <a href="https://www.microsoft.com/en-us/ai/ai-education" target="_blank">Microsoft AI Education</a>
-                    <a href="https://openai.com/blog/" target="_blank">OpenAI Blog & Resources</a>
-                    <a href="https://deeplearning.ai/resources/" target="_blank">DeepLearning.AI Resources</a>
+                    <a href="https://ai.google/education/" target="_blank"><i class="fab fa-google"></i> Google AI
+                        Education</a>
+                    <a href="https://www.microsoft.com/en-us/ai/ai-education" target="_blank"><i
+                            class="fab fa-microsoft"></i> Microsoft AI Education</a>
+                    <a href="https://openai.com/blog/" target="_blank"><i class="fas fa-blog"></i> OpenAI Blog &
+                        Resources</a>
+                    <a href="https://deeplearning.ai/resources/" target="_blank"><i class="fas fa-gem"></i>
+                        DeepLearning.AI Resources</a>
                 </div>
             </div>
         </div>
@@ -705,22 +1189,22 @@
 
                 <h3>Your AI Learning Stats</h3>
                 <div class="stats-grid">
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <i class="fas fa-brain"></i>
                         <h3>8</h3>
                         <p>AI-Guided Courses</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <i class="fas fa-check-circle"></i>
                         <h3>42</h3>
                         <p>Completed Lessons</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <i class="fas fa-lightbulb"></i>
                         <h3>128</h3>
                         <p>AI Suggestions Applied</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <i class="fas fa-trophy"></i>
                         <h3>5</h3>
                         <p>AI-Generated Projects</p>
@@ -729,7 +1213,7 @@
 
                 <h3>AI-Recommended Next Steps</h3>
                 <div class="course-grid">
-                    <div class="course-card">
+                    <div class="course-card fade-in">
                         <div class="course-image">
                             <span>Neural Networks</span>
                         </div>
@@ -742,12 +1226,12 @@
                             <p>AI-recommended based on your machine learning progress</p>
                             <div class="course-info">
                                 <span><i class="fas fa-star"></i> 4.9</span>
-                                <span class="btn">Start Now</span>
+                                <a href="#" class="btn">Start Now</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="course-card">
+                    <div class="course-card fade-in">
                         <div class="course-image">
                             <span>NLP</span>
                         </div>
@@ -760,7 +1244,7 @@
                             <p>AI-detected as matching your interests</p>
                             <div class="course-info">
                                 <span><i class="fas fa-star"></i> 4.7</span>
-                                <span class="btn">Start Now</span>
+                                <a href="#" class="btn">Start Now</a>
                             </div>
                         </div>
                     </div>
@@ -780,10 +1264,10 @@
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
-                    <p><a href="#" style="color: #cbd5e1;">Home</a></p>
-                    <p><a href="#" style="color: #cbd5e1;">Courses</a></p>
-                    <p><a href="#" style="color: #cbd5e1;">AI Tools</a></p>
-                    <p><a href="#" style="color: #cbd5e1;">Pricing</a></p>
+                    <a href="#">Home</a>
+                    <a href="#">Courses</a>
+                    <a href="#">AI Tools</a>
+                    <a href="#">Pricing</a>
                 </div>
                 <div class="footer-section">
                     <h3>Contact Us</h3>
@@ -793,8 +1277,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 AI Empower. All rights reserved. | <a href="#" style="color: #94a3b8;">Privacy Policy</a>
-                    | <a href="#" style="color: #94a3b8;">Terms of Service</a></p>
+                <p>&copy; 2023 AI Empower. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of
+                        Service</a></p>
             </div>
         </div>
     </footer>
@@ -811,34 +1295,23 @@
                 }, 500);
             });
 
-            // Animate elements on scroll
-            const animateOnScroll = function () {
-                const elements = document.querySelectorAll('.course-card, .stat-card, .ai-feature, .link-card');
+            // Fade-in animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
 
-                elements.forEach(element => {
-                    const position = element.getBoundingClientRect();
+            const fadeInOnScroll = function () {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
 
-                    // If element is in viewport
-                    if (position.top < window.innerHeight - 100) {
-                        element.style.opacity = 1;
-                        element.style.transform = 'translateY(0)';
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
                     }
                 });
             };
 
-            // Set initial state for animation
-            const animatedElements = document.querySelectorAll('.course-card, .stat-card, .ai-feature, .link-card');
-            animatedElements.forEach(element => {
-                element.style.opacity = 0;
-                element.style.transform = 'translateY(50px)';
-                element.style.transition = 'all 0.8s ease';
-            });
-
-            // Listen for scroll events
-            window.addEventListener('scroll', animateOnScroll);
-
-            // Trigger once on load
-            animateOnScroll();
+            // Check on load and scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Initial check
 
             // Simulate AI recommendations
             const aiRecommendation = document.querySelector('.welcome-banner p');
@@ -858,6 +1331,28 @@
                     currentIndex = (currentIndex + 1) % recommendations.length;
                 }, 500);
             }, 5000);
+
+            // AI Toggle functionality
+            const aiToggle = document.getElementById('aiToggle');
+            const codeExample = document.getElementById('codeExample');
+            const codeWithAI = codeExample.innerHTML;
+            const codeWithoutAI = codeExample.innerHTML.replace(/<span class="comment"># AI Suggestions:.*<\/span>/gs, '');
+
+            aiToggle.addEventListener('change', function () {
+                if (this.checked) {
+                    codeExample.innerHTML = codeWithAI;
+                } else {
+                    codeExample.innerHTML = codeWithoutAI;
+                }
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
         });
     </script>
 </body>

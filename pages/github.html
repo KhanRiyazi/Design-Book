@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhanRiyazi - GitHub Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        :root {
+            --github-black: #24292e;
+            --github-blue: #0366d6;
+            --github-green: #28a745;
+            --github-purple: #6f42c1;
+            --github-orange: #f66a0a;
+            --light: #f6f8fa;
+            --dark: #1e293b;
+            --border: #e1e4e8;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--github-black);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 24px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--github-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--github-blue), var(--github-purple));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .profile-info p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Repository Grid */
+        .repos-section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--github-black);
+        }
+
+        .repos-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .repos-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .repos-header h2 {
+            font-size: 1.8rem;
+            color: var(--github-black);
+        }
+
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .repo-card {
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .repo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--github-blue);
+        }
+
+        .repo-image {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .repo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .repo-card:hover .repo-image img {
+            transform: scale(1.05);
+        }
+
+        .repo-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .repo-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--github-blue);
+            display: flex;
+            align-items: center;
+        }
+
+        .repo-name i {
+            margin-right: 8px;
+        }
+
+        .repo-description {
+            color: #586069;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .repo-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #586069;
+            margin-top: auto;
+        }
+
+        .repo-language {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+            background-color: var(--github-blue);
+        }
+
+        .repo-stats {
+            display: flex;
+            gap: 15px;
+        }
+
+        .repo-stat {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--github-blue);
+            color: white;
+            border-color: var(--github-blue);
+        }
+
+        .search-box {
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 16px 8px 40px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #586069;
+        }
+
+        /* View More Section */
+        .view-more {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background: var(--github-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0356b9;
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            background: var(--github-black);
+            color: white;
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .resource-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .resource-card h3 i {
+            margin-right: 10px;
+            color: var(--github-blue);
+        }
+
+        .resource-card p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .resource-links {
+            list-style: none;
+        }
+
+        .resource-links li {
+            margin-bottom: 10px;
+        }
+
+        .resource-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .resource-links a:hover {
+            color: white;
+        }
+
+        .resource-links i {
+            margin-right: 8px;
+            width: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--github-black);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2d3748;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .repo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .repos-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .filter-section {
+                flex-direction: column;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fab fa-github"></i>
+                    KhanRiyazi
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#repositories">Repositories</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="profile-container">
+                <div class="avatar">
+                    <img src="https://avatars.githubusercontent.com/u/42035542?v=4" alt="KhanRiyazi">
+                </div>
+                <div class="profile-info">
+                    <h1>KhanRiyazi</h1>
+                    <p>Full Stack Developer | Open Source Enthusiast | Building amazing projects with 300+ repositories
+                    </p>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number" id="repo-count">300+</span>
+                        <span class="stat-label">Repositories</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Stars</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Followers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Repositories Section -->
+    <section id="repositories" class="repos-section">
+        <div class="container">
+            <h2 class="section-title">Featured Repositories</h2>
+
+            <div class="repos-container">
+                <div class="repos-header">
+                    <h2>My Projects</h2>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search repositories..." id="repo-search">
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
+                    <button class="filter-btn" data-filter="Python">Python</button>
+                    <button class="filter-btn" data-filter="HTML">HTML</button>
+                    <button class="filter-btn" data-filter="CSS">CSS</button>
+                    <button class="filter-btn" data-filter="Java">Java</button>
+                </div>
+
+                <div class="repo-grid" id="repos-grid">
+                    <!-- Repositories will be dynamically added here -->
+                </div>
+
+                <div class="view-more">
+                    <a href="https://github.com/KhanRiyazi?tab=repositories" class="btn" target="_blank">
+                        <i class="fas fa-eye"></i> View All Repositories
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">GitHub Learning Resources</h2>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3><i class="fas fa-graduation-cap"></i> GitHub Learning Lab</h3>
+                    <p>Learn GitHub through interactive, project-based courses without leaving GitHub.</p>
+                    <ul class="resource-links">
+                        <li><a href="https://lab.github.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                                GitHub Learning Lab</a></li>
+                        <li><a href="https://github.com/skills" target="_blank"><i class="fab fa-github"></i> GitHub
+                                Skills</a></li>
+                        <li><a href="https://docs.github.com/en/get-started/quickstart/hello-world" target="_blank"><i
+                                    class="fas fa-book"></i> Hello World Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h3><i class="fas fa-book"></i> GitHub Documentation</h3>
+                    <p>Official documentation for all GitHub features and services.</p>
+                    <ul class="resource-links">
+                        <li><a href="https://docs.github.com/en" target="_blank"><i class="fas fa-file-alt"></i> GitHub
+                                Docs</a></li>
+                        <li><a href="https://docs.github.com/en/get-started" target="_blank"><i
+                                    class="fas fa-rocket"></i> Get Started Guide</a></li>
+                        <li><a href="https://docs.github.com/en/pages" target="_blank"><i
+                                    class="fas fa-laptop-code"></i> GitHub Pages Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h3><i class="fas fa-video"></i> Video Tutorials</h3>
+                    <p>Watch video tutorials to master GitHub features and workflows.</p>
+                    <ul class="resource-links">
+                        <li><a href="https://www.youtube.com/github" target="_blank"><i class="fab fa-youtube"></i>
+                                GitHub YouTube Channel</a></li>
+                        <li><a href="https://www.youtube.com/playlist?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-"
+                                target="_blank"><i class="fas fa-play-circle"></i> GitHub Beginners Series</a></li>
+                        <li><a href="https://www.youtube.com/playlist?list=PL0lo9MOBetEHhfG9vJzVCTiDYcbhAiEqL"
+                                target="_blank"><i class="fas fa-code-branch"></i> GitHub Actions Tutorials</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h3><i class="fas fa-users"></i> Community & Support</h3>
+                    <p>Connect with other developers and get help from the GitHub community.</p>
+                    <ul class="resource-links">
+                        <li><a href="https://github.com/community" target="_blank"><i class="fas fa-comments"></i>
+                                GitHub Community</a></li>
+                        <li><a href="https://support.github.com/" target="_blank"><i class="fas fa-life-ring"></i>
+                                GitHub Support</a></li>
+                        <li><a href="https://github.com/readme" target="_blank"><i class="fas fa-star"></i> GitHub
+                                ReadME Project</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>KhanRiyazi GitHub</h3>
+                    <p>Showcasing 300+ repositories and projects with a passion for open source development.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="https://github.com/KhanRiyazi">GitHub Profile</a></p>
+                    <p><a href="https://github.com/KhanRiyazi?tab=repositories">All Repositories</a></p>
+                    <p><a href="https://github.com/KhanRiyazi?tab=stars">Starred Repositories</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <p><a href="https://github.com/KhanRiyazi"><i class="fab fa-github"></i> GitHub</a></p>
+                    <p><a href="https://github.com/KhanRiyazi"><i class="fas fa-envelope"></i> Contact</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 KhanRiyazi GitHub Portfolio. This site is not affiliated with GitHub.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample repository data with image URLs
+        const sampleRepos = [
+            {
+                name: "AI-Powered-Chat-App",
+                description: "A real-time chat application with AI capabilities using React and Node.js",
+                language: "JavaScript",
+                stargazers_count: 15,
+                forks_count: 7,
+                image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                name: "E-Commerce-Platform",
+                description: "Full-stack e-commerce solution with payment integration",
+                language: "JavaScript",
+                stargazers_count: 23,
+                forks_count: 12,
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                name: "Machine-Learning-Basics",
+                description: "Introduction to machine learning with Python and scikit-learn",
+                language: "Python",
+                stargazers_count: 42,
+                forks_count: 18,
+                image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                name: "React-UI-Components",
+                description: "Collection of reusable React components with Storybook",
+                language: "JavaScript",
+                stargazers_count: 31,
+                forks_count: 9,
+                image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                name: "Data-Visualization-Dashboard",
+                description: "Interactive dashboard for data visualization using D3.js",
+                language: "JavaScript",
+                stargazers_count: 27,
+                forks_count: 11,
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                name: "Python-Automation-Scripts",
+                description: "Useful Python scripts for automating everyday tasks",
+                language: "Python",
+                stargazers_count: 38,
+                forks_count: 15,
+                image: "https://images.unsplash.com/photo-1526379879527-8559ecfcaec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                name: "Mobile-App-React-Native",
+                description: "Cross-platform mobile application built with React Native",
+                language: "JavaScript",
+                stargazers_count: 19,
+                forks_count: 6,
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                name: "Blockchain-Basics",
+                description: "Learning resources and examples for blockchain development",
+                language: "JavaScript",
+                stargazers_count: 52,
+                forks_count: 21,
+                image: "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                name: "DevOps-Toolkit",
+                description: "Collection of scripts and tools for DevOps practices",
+                language: "Shell",
+                stargazers_count: 29,
+                forks_count: 13,
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        // Function to display repositories
+        function displayRepositories(repos) {
+            const grid = document.getElementById('repos-grid');
+            grid.innerHTML = ''; // Clear existing content
+
+            repos.forEach(repo => {
+                const languageClass = repo.language ? repo.language.replace(/#|\+/g, '-') : 'other';
+
+                const card = document.createElement('div');
+                card.className = 'repo-card';
+                card.setAttribute('data-language', repo.language || 'Other');
+                card.innerHTML = `
+                    <div class="repo-image">
+                        <img src="${repo.image}" alt="${repo.name}">
+                    </div>
+                    <div class="repo-content">
+                        <h3 class="repo-name">
+                            <i class="fas fa-book"></i>
+                            ${repo.name}
+                        </h3>
+                        <p class="repo-description">${repo.description || 'No description available'}</p>
+                        <div class="repo-meta">
+                            <div class="repo-language">
+                                <span class="language-color" style="background-color: ${getLanguageColor(repo.language)}"></span>
+                                ${repo.language || 'Text'}
+                            </div>
+                            <div class="repo-stats">
+                                <span class="repo-stat">
+                                    <i class="fas fa-star"></i> ${repo.stargazers_count}
+                                </span>
+                                <span class="repo-stat">
+                                    <i class="fas fa-code-branch"></i> ${repo.forks_count}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Function to get color based on programming language
+        function getLanguageColor(language) {
+            const colors = {
+                JavaScript: '#f1e05a',
+                Python: '#3572A5',
+                HTML: '#e34c26',
+                CSS: '#563d7c',
+                Java: '#b07219',
+                Shell: '#89e051',
+                TypeScript: '#2b7489',
+                PHP: '#4F5D95',
+                Ruby: '#701516',
+                Default: '#586069'
+            };
+
+            return colors[language] || colors.Default;
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+                const repoCards = document.querySelectorAll('.repo-card');
+
+                repoCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-language') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        document.getElementById('repo-search').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const repoCards = document.querySelectorAll('.repo-card');
+
+            repoCards.forEach(card => {
+                const repoName = card.querySelector('.repo-name').textContent.toLowerCase();
+                const repoDescription = card.querySelector('.repo-description').textContent.toLowerCase();
+
+                if (repoName.includes(searchTerm) || repoDescription.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Initialize with sample data
+        document.addEventListener('DOMContentLoaded', () => {
+            displayRepositories(sampleRepos);
+
+            // Add animation to repo cards
+            const repoCards = document.querySelectorAll('.repo-card');
+            repoCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in');
+            });
+        });
+
+        // Add CSS for fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .fade-in {
+                animation: fadeIn 0.6s ease forwards;
+                opacity: 0;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

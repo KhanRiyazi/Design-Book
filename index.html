@@ -212,54 +212,279 @@
             color: var(--dark);
         }
 
-        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #e2e8f0;
         }
 
         .hero::before {
-            content: "";
+            content: '';
             position: absolute;
-            inset: 0;
-            display: block;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
+            animation: pulse 15s infinite linear;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background:
-                linear-gradient(rgba(0, 0, 0, .35), rgba(0, 0, 0, .35)),
-                url("https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80") center / cover no-repeat;
-            z-index: 0;
-            opacity: 1;
+                linear-gradient(45deg, rgba(74, 144, 226, 0.1) 0%, transparent 70%),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234a90e2' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: 1;
             pointer-events: none;
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .hero .pre-title {
+            display: inline-block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #4a90e2;
+            background: rgba(74, 144, 226, 0.12);
+            padding: 8px 18px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            animation: fadeIn 0.8s ease-out;
+            border: 1px solid rgba(74, 144, 226, 0.2);
         }
 
         .hero h1 {
             font-size: 3.2rem;
-            margin-bottom: 20px;
+            font-weight: 700;
             line-height: 1.2;
+            margin-bottom: 16px;
+            color: #f8fafc;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #cbd5e1;
+            animation: slideIn 1s ease-out;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin: 0 auto 30px;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            color: #94a3b8;
+            max-width: 600px;
+            animation: fadeIn 1.2s ease-out;
         }
 
-        .hero-buttons {
+        .hero-features {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
             flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 40px;
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .hero-feature:hover {
+            transform: translateY(-2px);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border-color: rgba(74, 144, 226, 0.3);
+        }
+
+        .hero-feature i {
+            font-size: 1.2rem;
+            color: #4a90e2;
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .hero-feature span {
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+
+        .hero-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.5), transparent);
+            margin: 32px 0;
+            animation: expand 1.6s ease-out;
+        }
+
+        .hero-prompt {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(136, 84, 208, 0.15);
+            color: #a78bfa;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            animation: fadeIn 1.8s ease-out;
+        }
+
+        .hero-prompt i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes expand {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 30px;
+                border-radius: 16px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-features {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .hero-feature {
+                padding: 10px 16px;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero::before {
+                background-size: 90% auto;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero::before {
+                background-size: 95% auto;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
         }
 
         /* Math Video Section */
@@ -1290,6 +1515,68 @@
             </div>
         </div>
     </section>
+
+    <!--- section to hold social media icons start -->
+
+    <div class="hero-social" style="position: fixed; right: 15px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 18px; 
+    background: rgba(255,255,255,0.1); padding: 12px; border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999;">
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@ThisOne-007" target="_blank" title="YouTube"
+            style="color:#ff0000; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/KhanRiyazi" target="_blank" title="GitHub"
+            style="color:#333; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-github"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" title="LinkedIn"
+            style="color:#0a66c2; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+        <!-- Twitter / X -->
+        <a href="https://x.com/RizwanA96852028" target="_blank" title="Twitter"
+            style="color:#1da1f2; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-twitter"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="" target="_blank" title="Instagram" style="color:#e1306c; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <!-- ✅ Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=100015139065588" title="Facebook" target="_blank"
+            style="color:#1877f2; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-facebook"></i>
+        </a>
+
+        <!-- ✅ Pinterest -->
+        <a href="#" target="_blank" title="Pinterest" style="color:#e60023; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-pinterest"></i>
+        </a>
+
+        <!-- ✅ Dribbble (designers) -->
+        <a href="https://dribbble.com/khanRiyazi" target="_blank" title="Dribbble"
+            style="color:#ea4c89; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-dribbble"></i>
+        </a>
+
+        <!-- ✅ Behance (designers) -->
+        <a href="https://www.behance.net/rizwanali3251" target="_blank" title="Behance"
+            style="color:#1769ff; font-size: 24px; text-decoration: none;">
+            <i class="fab fa-behance"></i>
+        </a>
+    </div>
+
+    <!--- section to hold social media icons end -->
 
     <!-- Daily Math Section -->
     <section class="daily-math" id="daily-math">

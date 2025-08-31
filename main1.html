@@ -220,29 +220,21 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-
         }
 
         .hero::before {
             content: "";
             position: absolute;
             inset: 0;
-            /* top/right/bottom/left: 0 */
             display: block;
-
-            /* add a subtle dark overlay + your image */
             background:
-                linear-gradient(rgba(0, 0, 0, .35), rgba(0, 0, 0, .35)),
-                url("qalam2.png") center / cover no-repeat;
-
-            /* key change: don't push it behind <body> */
-            z-index: 0;
-            opacity: 1;
-            /* overlay handles the dimming */
+                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3Cpattern id='math-pattern' x='0' y='0' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0,0 L100,0 L100,100 Z' fill='rgba(255,255,255,0.05)'/%3E%3Cpath d='M0,0 L0,100 L100,100 Z' fill='rgba(255,255,255,0.05)'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='20' fill='rgba(255,255,255,0.1)' text-anchor='middle'%3E∑∫∂%3C/text%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23math-pattern)'/%3E%3C/svg%3E");
+            background-color: #000;
+            z-index: -1;
+            opacity: 0.7;
             pointer-events: none;
-            /* don’t block clicks on content */
         }
-
 
         .hero-content {
             position: relative;
@@ -266,9 +258,23 @@
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 20px;
             flex-wrap: wrap;
+        }
+
+        .hero-buttons a {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #fff;
+            background: var(--primary);
+        }
+
+        .hero-buttons a:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         /* Math Video Section */
@@ -297,7 +303,6 @@
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
-            /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
         }
@@ -447,15 +452,15 @@
         }
 
         .math-course {
-            background: linear-gradient(45deg, var(--math), var(--math-dark)), url('https://placehold.co/600x400/8e44ad/ffffff?text=Calculus') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
         }
 
         .design-course {
-            background: linear-gradient(45deg, var(--primary), var(--primary-dark)), url('https://placehold.co/600x400/0066cc/ffffff?text=UI/UX+Design') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80') center/cover;
         }
 
         .dev-course {
-            background: linear-gradient(45deg, var(--secondary), var(--secondary-dark)), url('https://placehold.co/600x400/ff6600/ffffff?text=Web+Development') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80') center/cover;
         }
 
         .course-img::after {
@@ -916,6 +921,8 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-column h3 {
@@ -963,6 +970,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -1011,6 +1019,143 @@
             padding: 0 15px;
             border-radius: 0 4px 4px 0;
             cursor: pointer;
+        }
+
+        /* Resource Links Section */
+        .resource-links {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .resource-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .resource-link-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-link-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-link-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .resource-link-card h3 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .resource-link-list {
+            list-style: none;
+        }
+
+        .resource-link-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .resource-link-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .resource-link-list a {
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link-list a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .resource-link-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        /* Profit Platforms Section */
+        .profit-platforms {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .profit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .profit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .profit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profit-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .profit-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .profit-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .profit-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .profit-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .profit-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .profit-links a i {
+            margin-right: 5px;
         }
 
         /* Responsive Design */
@@ -1110,6 +1255,16 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+
+            .profit-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profit-links a {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1127,30 +1282,33 @@
             <nav id="mainNav">
                 <ul>
                     <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#"><i class="fas fa-video"></i> Math Videos</a></li>
+                    <li><a href="#daily-math"><i class="fas fa-video"></i> Math Videos</a></li>
                     <li><a href="#"><i class="fas fa-palette"></i> Design Courses</a></li>
                     <li><a href="#"><i class="fas fa-code"></i> Development</a></li>
-                    <li><a href="#"><i class="fas fa-tools"></i> Resources</a></li>
+                    <li><a href="#profit-platforms"><i class="fas fa-tools"></i> Profit Platforms</a></li>
                     <li><a href="#" class="btn btn-math"><i class="fas fa-user-plus"></i> Sign Up</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
             <h1>Master Mathematics, Design & Development</h1>
             <p>Daily math tutorials, design courses, and development resources all in one place</p>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-math"><i class="fas fa-play-circle"></i> Math Videos</a>
-                <a href="#" class="btn"><i class="fas fa-palette"></i> Design Courses</a>
-                <a href="#" class="btn btn-accent"><i class="fas fa-code"></i> Dev Resources</a>
+                <a href="#daily-math" class="btn btn-math"><i class="fas fa-play-circle"></i> Math Videos</a>
+                <a href="#courses" class="btn"><i class="fas fa-palette"></i> Design Courses</a>
+                <a href="#project" class="btn btn-accent"><i class="fas fa-code"></i> Dev Resources</a>
+                <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
+                <a href="#" class="btn btn-accent"><i class="fas fa-code"></i> Prompt Engineering</a>
             </div>
         </div>
     </section>
 
     <!-- Daily Math Section -->
-    <section class="daily-math">
+    <section class="daily-math" id="daily-math">
         <div class="container math-container">
             <div class="math-video">
                 <div class="video-container">
@@ -1160,7 +1318,7 @@
                         allowfullscreen></iframe>
                 </div>
                 <div class="video-content">
-                    <h3>Calculation Made Easy: From the diffrent techniques</h3>
+                    <h3>Calculation Made Easy: From the different techniques</h3>
                     <p>Today's lesson covers the fundamentals of derivatives with practical examples.</p>
                     <a href="#" class="btn btn-math"><i class="fab fa-youtube"></i> Watch on YouTube</a>
                 </div>
@@ -1229,7 +1387,7 @@
     </section>
 
     <!-- Courses Section -->
-    <section class="container">
+    <section class="container" id="courses">
         <h2 class="section-title">Featured Courses</h2>
         <p class="section-subtitle">Learn mathematics, design and development with our comprehensive courses</p>
         <div class="courses">
@@ -1299,7 +1457,7 @@
     </section>
 
     <!-- Project Previews Section -->
-    <section class="project-previews">
+    <section class="project-previews" id="project">
         <div class="container">
             <h2 class="section-title">Project Previews</h2>
             <p class="section-subtitle">Explore our latest projects in mathematics, design, and development</p>
@@ -1307,19 +1465,20 @@
             <div class="project-grid">
                 <div class="project-card">
                     <div class="project-image"
-                        style="background-image: url('https://placehold.co/600x400/8e44ad/ffffff?text=Math+Visualization')">
+                        style="background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
                         <div class="project-overlay">
                             <a href="#" title="View Live"><i class="fas fa-external-link-alt"></i></a>
                             <a href="#" title="GitHub Repository"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>3D Math Visualization Tool</h3>
-                        <p>Interactive 3D graphing calculator for visualizing complex mathematical concepts.</p>
+                        <h3>MathDesign</h3>
+                        <p>Master the ancient secrets of Vedic Mathematics, the Golden Ratio, and Leonardo da Vinci's
+                            mathematical genius.</p>
                         <div class="project-tags">
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">Three.js</span>
-                            <span class="project-tag">Mathematics</span>
+                            <span class="project-tag">Golden Ratio</span>
+                            <span class="project-tag">Vedic Mathematics</span>
+                            <span class="project-tag">Da Vinci's Methods</span>
                         </div>
                         <a href="#" class="btn btn-outline">View Details</a>
                     </div>
@@ -1327,7 +1486,7 @@
 
                 <div class="project-card">
                     <div class="project-image"
-                        style="background-image: url('https://placehold.co/600x400/0066cc/ffffff?text=UI+Design+System')">
+                        style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80')">
                         <div class="project-overlay">
                             <a href="#" title="View Live"><i class="fas fa-external-link-alt"></i></a>
                             <a href="#" title="GitHub Repository"><i class="fab fa-github"></i></a>
@@ -1347,7 +1506,7 @@
 
                 <div class="project-card">
                     <div class="project-image"
-                        style="background-image: url('https://placehold.co/600x400/ff6600/ffffff?text=Web+App')">
+                        style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80')">
                         <div class="project-overlay">
                             <a href="#" title="View Live"><i class="fas fa-external-link-alt"></i></a>
                             <a href="#" title="GitHub Repository"><i class="fab fa-github"></i></a>
@@ -1357,9 +1516,9 @@
                         <h3>E-Learning Platform</h3>
                         <p>Full-stack e-learning platform with video courses, quizzes, and progress tracking.</p>
                         <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Empower AI</span>
                         </div>
                         <a href="#" class="btn btn-outline">View Details</a>
                     </div>
@@ -1456,6 +1615,154 @@
                         <h3>Learning Resources</h3>
                         <p>Curated list of learning materials and guides for various technologies</p>
                         <a href="#" class="btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resource Links Section -->
+    <section class="resource-links">
+        <div class="container">
+            <h2 class="section-title">Learning Resources</h2>
+            <p class="section-subtitle">Explore the best resources for mathematics, design, and development</p>
+
+            <div class="resource-links-grid">
+                <div class="resource-link-card">
+                    <h3><i class="fab fa-wikipedia-w"></i> Wikipedia Resources</h3>
+                    <ul class="resource-link-list">
+                        <li><a href="https://en.wikipedia.org/wiki/Mathematics" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Mathematics Overview</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Graphic_design" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Graphic Design</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Web_development" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Web Development</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/User_interface_design" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> UI/UX Design</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Computer_programming" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Computer Programming</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-link-card">
+                    <h3><i class="fab fa-youtube"></i> YouTube Channels</h3>
+                    <ul class="resource-link-list">
+                        <li><a href="https://www.youtube.com/user/numberphile" target="_blank"><i
+                                    class="fab fa-youtube"></i> Numberphile (Mathematics)</a></li>
+                        <li><a href="https://www.youtube.com/c/3blue1brown" target="_blank"><i
+                                    class="fab fa-youtube"></i> 3Blue1Brown (Math Visualized)</a></li>
+                        <li><a href="https://www.youtube.com/c/FluxWithRanSegall" target="_blank"><i
+                                    class="fab fa-youtube"></i> Flux (Web Design)</a></li>
+                        <li><a href="https://www.youtube.com/c/Freecodecamp" target="_blank"><i
+                                    class="fab fa-youtube"></i> freeCodeCamp (Development)</a></li>
+                        <li><a href="https://www.youtube.com/c/WebDevSimplified" target="_blank"><i
+                                    class="fab fa-youtube"></i> Web Dev Simplified</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-link-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Learning Platforms</h3>
+                    <ul class="resource-link-list">
+                        <li><a href="https://www.khanacademy.org/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Khan Academy (Math)</a></li>
+                        <li><a href="https://www.coursera.org/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                                Coursera</a></li>
+                        <li><a href="https://www.udemy.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                                Udemy</a></li>
+                        <li><a href="https://www.edx.org/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                                edX</a></li>
+                        <li><a href="https://www.codecademy.com/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Codecademy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profit Platforms Section -->
+    <section class="profit-platforms" id="profit-platforms">
+        <div class="container">
+            <h2 class="section-title">Profit Platforms</h2>
+            <p class="section-subtitle">Explore these platforms to monetize your skills and earn income</p>
+
+            <div class="profit-grid">
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fab fa-youtube"></i></div>
+                    <h3>YouTube</h3>
+                    <p>Earn revenue from ads, channel memberships, Super Chat, and YouTube Premium revenue</p>
+                    <div class="profit-links">
+                        <a href="https://www.youtube.com/creators/" target="_blank"><i
+                                class="fas fa-external-link-alt"></i> YouTube Creators</a>
+                        <a href="https://en.wikipedia.org/wiki/YouTube" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fab fa-google"></i></div>
+                    <h3>Google AdSense</h3>
+                    <p>Earn money by displaying targeted ads on your website, blog, or YouTube videos</p>
+                    <div class="profit-links">
+                        <a href="https://www.google.com/adsense/" target="_blank"><i
+                                class="fas fa-external-link-alt"></i> Official Site</a>
+                        <a href="https://en.wikipedia.org/wiki/AdSense" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>E-commerce</h3>
+                    <p>Sell digital products, courses, templates, and physical goods through various platforms</p>
+                    <div class="profit-links">
+                        <a href="https://www.shopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Shopify</a>
+                        <a href="https://www.etsy.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Etsy</a>
+                        <a href="https://en.wikipedia.org/wiki/E-commerce" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Freelance Platforms</h3>
+                    <p>Offer your skills and services to clients worldwide on freelance marketplaces</p>
+                    <div class="profit-links">
+                        <a href="https://www.upwork.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Upwork</a>
+                        <a href="https://www.fiverr.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Fiverr</a>
+                        <a href="https://en.wikipedia.org/wiki/Freelance_marketplace" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fas fa-book"></i></div>
+                    <h3>Online Courses</h3>
+                    <p>Create and sell courses on popular e-learning platforms to share your expertise</p>
+                    <div class="profit-links">
+                        <a href="https://www.udemy.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Udemy</a>
+                        <a href="https://www.coursera.org/teach" target="_blank"><i
+                                class="fas fa-external-link-alt"></i> Coursera</a>
+                        <a href="https://en.wikipedia.org/wiki/Massive_open_online_course" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    </div>
+                </div>
+
+                <div class="profit-card">
+                    <div class="profit-icon"><i class="fas fa-pencil-alt"></i></div>
+                    <h3>Content Creation</h3>
+                    <p>Monetize your content through blogging, affiliate marketing, and sponsored content</p>
+                    <div class="profit-links">
+                        <a href="https://www.wordpress.org/" target="_blank"><i class="fab fa-wordpress"></i>
+                            WordPress</a>
+                        <a href="https://www.medium.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                            Medium</a>
+                        <a href="https://en.wikipedia.org/wiki/Content_creation" target="_blank"><i
+                                class="fab fa-wikipedia-w"></i> Wikipedia</a>
                     </div>
                 </div>
             </div>
@@ -1583,10 +1890,10 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-video"></i> Math Videos</a></li>
+                        <li><a href="#daily-math"><i class="fas fa-video"></i> Math Videos</a></li>
                         <li><a href="#"><i class="fas fa-palette"></i> Design Courses</a></li>
                         <li><a href="#"><i class="fas fa-code"></i> Development</a></li>
-                        <li><a href="#"><i class="fas fa-tools"></i> Resources</a></li>
+                        <li><a href="#profit-platforms"><i class="fas fa-tools"></i> Profit Platforms</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1663,7 +1970,7 @@
 
         // Simple animation on scroll
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.course-card, .stat-item, .testimonial-card, .resource-card, .pricing-plan, .project-card');
+            const elements = document.querySelectorAll('.course-card, .stat-item, .testimonial-card, .resource-card, .pricing-plan, .project-card, .resource-link-card, .profit-card');
 
             elements.forEach(element => {
                 const position = element.getBoundingClientRect();
@@ -1677,7 +1984,7 @@
         };
 
         // Initialize elements for animation
-        document.querySelectorAll('.course-card, .stat-item, .testimonial-card, .resource-card, .pricing-plan, .project-card').forEach(element => {
+        document.querySelectorAll('.course-card, .stat-item, .testimonial-card, .resource-card, .pricing-plan, .project-card, .resource-link-card, .profit-card').forEach(element => {
             element.style.opacity = 0;
             element.style.transform = 'translateY(20px)';
             element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';

@@ -212,6 +212,7 @@
             color: var(--dark);
         }
 
+        /* Hero Section - Fixed and Improved */
         .hero {
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
             border-radius: 24px;
@@ -222,7 +223,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 40px auto;
             font-family: 'Inter', 'Segoe UI', sans-serif;
             color: #e2e8f0;
         }
@@ -258,21 +259,6 @@
             z-index: 2;
         }
 
-        .hero .pre-title {
-            display: inline-block;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #4a90e2;
-            background: rgba(74, 144, 226, 0.12);
-            padding: 8px 18px;
-            border-radius: 100px;
-            margin-bottom: 20px;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            animation: fadeIn 0.8s ease-out;
-            border: 1px solid rgba(74, 144, 226, 0.2);
-        }
-
         .hero h1 {
             font-size: 3.2rem;
             font-weight: 700;
@@ -286,14 +272,6 @@
             animation: slideIn 0.8s ease-out;
         }
 
-        .hero h2 {
-            font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-            color: #cbd5e1;
-            animation: slideIn 1s ease-out;
-        }
-
         .hero p {
             font-size: 1.2rem;
             line-height: 1.6;
@@ -303,67 +281,11 @@
             animation: fadeIn 1.2s ease-out;
         }
 
-        .hero-features {
+        .hero-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 40px;
+            gap: 15px;
             animation: fadeIn 1.4s ease-out;
-        }
-
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            background: rgba(30, 41, 59, 0.7);
-            padding: 12px 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .hero-feature:hover {
-            transform: translateY(-2px);
-            background: rgba(30, 41, 59, 0.9);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-            border-color: rgba(74, 144, 226, 0.3);
-        }
-
-        .hero-feature i {
-            font-size: 1.2rem;
-            color: #4a90e2;
-            margin-right: 12px;
-            width: 24px;
-            text-align: center;
-        }
-
-        .hero-feature span {
-            font-weight: 500;
-            color: #e2e8f0;
-        }
-
-        .hero-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.5), transparent);
-            margin: 32px 0;
-            animation: expand 1.6s ease-out;
-        }
-
-        .hero-prompt {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(136, 84, 208, 0.15);
-            color: #a78bfa;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(167, 139, 250, 0.2);
-            animation: fadeIn 1.8s ease-out;
-        }
-
-        .hero-prompt i {
-            margin-right: 10px;
-            font-size: 1.1rem;
         }
 
         @keyframes pulse {
@@ -400,91 +322,37 @@
             }
         }
 
-        @keyframes expand {
-            from {
-                width: 0%;
-            }
-
-            to {
-                width: 100%;
-            }
+        /* Social Media Sidebar - Improved */
+        .hero-social {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 8px;
+            border-radius: 15px 0 0 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+            transition: all 0.3s ease;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 40px 30px;
-                border-radius: 16px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero h2 {
-                font-size: 1.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-features {
-                flex-direction: column;
-            }
+        .hero-social a {
+            color: #333;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
         }
 
-        @media (max-width: 480px) {
-            .hero {
-                padding: 30px 20px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero h2 {
-                font-size: 1.3rem;
-            }
-
-            .hero-feature {
-                padding: 10px 16px;
-            }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero::before {
-                background-size: 90% auto;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-features {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .hero-content {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero::before {
-                background-size: 95% auto;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
+        .hero-social a:hover {
+            transform: scale(1.2);
         }
 
         /* Math Video Section */
@@ -1131,6 +999,8 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-column h3 {
@@ -1415,6 +1285,11 @@
                 margin: 15px 0;
             }
 
+            .hero {
+                padding: 40px 30px;
+                margin: 20px auto;
+            }
+
             .hero h1 {
                 font-size: 2.3rem;
             }
@@ -1433,6 +1308,11 @@
                 max-width: 300px;
                 margin-bottom: 10px;
                 text-align: center;
+            }
+
+            .hero-social {
+                display: none;
+                /* Hide on mobile to prevent overlap */
             }
 
             .trust-item {
@@ -1474,6 +1354,20 @@
                 justify-content: center;
             }
         }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 
@@ -1491,8 +1385,8 @@
                 <ul>
                     <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="#daily-math"><i class="fas fa-video"></i> Math Videos</a></li>
-                    <li><a href="#"><i class="fas fa-palette"></i> Design Courses</a></li>
-                    <li><a href="#"><i class="fas fa-code"></i> Development</a></li>
+                    <li><a href="#courses"><i class="fas fa-palette"></i> Design Courses</a></li>
+                    <li><a href="#project"><i class="fas fa-code"></i> Development</a></li>
                     <li><a href="#profit-platforms"><i class="fas fa-tools"></i> Profit Platforms</a></li>
                     <li><a href="#" class="btn btn-math"><i class="fas fa-user-plus"></i> Sign Up</a></li>
                 </ul>
@@ -1508,75 +1402,60 @@
             <div class="hero-buttons">
                 <a href="#daily-math" class="btn btn-math"><i class="fas fa-play-circle"></i> Math Videos</a>
                 <a href="#courses" class="btn"><i class="fas fa-palette"></i> Design Courses</a>
-
                 <a href="#project" class="btn btn-accent"><i class="fas fa-code"></i> Dev Resources</a>
-                <a href="pages/github.html" class="btn"><i class="fas fa-palette"></i> Github </a>
-                <a href="pages/promptE.html" class="btn btn-accent"><i class="fas fa-code"></i> Prompt engineering</a>
+                <a href="pages/github.html" class="btn"><i class="fab fa-github"></i> GitHub </a>
+                <a href="pages/promptE.html" class="btn btn-accent"><i class="fas fa-code"></i> Prompt Engineering</a>
             </div>
         </div>
     </section>
 
-    <!--- section to hold social media icons start -->
-
-    <div class="hero-social" style="position: fixed; right: 15px; top: 50%; transform: translateY(-50%);
-    display: flex; flex-direction: column; gap: 18px; 
-    background: rgba(255,255,255,0.1); padding: 12px; border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999;">
-
+    <!-- Social Media Sidebar -->
+    <div class="hero-social">
         <!-- YouTube -->
-        <a href="https://www.youtube.com/@ThisOne-007" target="_blank" title="YouTube"
-            style="color:#ff0000; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-youtube"></i>
+        <a href="https://www.youtube.com/@ThisOne-007" target="_blank" title="YouTube">
+            <i class="fab fa-youtube" style="color:#ff0000;"></i>
         </a>
 
         <!-- GitHub -->
-        <a href="https://github.com/KhanRiyazi" target="_blank" title="GitHub"
-            style="color:#333; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-github"></i>
+        <a href="https://github.com/KhanRiyazi" target="_blank" title="GitHub">
+            <i class="fab fa-github" style="color:#333;"></i>
         </a>
 
         <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" title="LinkedIn"
-            style="color:#0a66c2; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin" style="color:#0a66c2;"></i>
         </a>
 
         <!-- Twitter / X -->
-        <a href="https://x.com/RizwanA96852028" target="_blank" title="Twitter"
-            style="color:#1da1f2; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-twitter"></i>
+        <a href="https://x.com/RizwanA96852028" target="_blank" title="Twitter">
+            <i class="fab fa-twitter" style="color:#1da1f2;"></i>
         </a>
 
         <!-- Instagram -->
-        <a href="" target="_blank" title="Instagram" style="color:#e1306c; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-instagram"></i>
+        <a href="#" target="_blank" title="Instagram">
+            <i class="fab fa-instagram" style="color:#e1306c;"></i>
         </a>
 
-        <!-- ✅ Facebook -->
-        <a href="https://www.facebook.com/profile.php?id=100015139065588" title="Facebook" target="_blank"
-            style="color:#1877f2; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-facebook"></i>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=100015139065588" title="Facebook" target="_blank">
+            <i class="fab fa-facebook" style="color:#1877f2;"></i>
         </a>
 
-        <!-- ✅ Pinterest -->
-        <a href="#" target="_blank" title="Pinterest" style="color:#e60023; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-pinterest"></i>
+        <!-- Pinterest -->
+        <a href="#" target="_blank" title="Pinterest">
+            <i class="fab fa-pinterest" style="color:#e60023;"></i>
         </a>
 
-        <!-- ✅ Dribbble (designers) -->
-        <a href="https://dribbble.com/khanRiyazi" target="_blank" title="Dribbble"
-            style="color:#ea4c89; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-dribbble"></i>
+        <!-- Dribbble -->
+        <a href="https://dribbble.com/khanRiyazi" target="_blank" title="Dribbble">
+            <i class="fab fa-dribbble" style="color:#ea4c89;"></i>
         </a>
 
-        <!-- ✅ Behance (designers) -->
-        <a href="https://www.behance.net/rizwanali3251" target="_blank" title="Behance"
-            style="color:#1769ff; font-size: 24px; text-decoration: none;">
-            <i class="fab fa-behance"></i>
+        <!-- Behance -->
+        <a href="https://www.behance.net/rizwanali3251" target="_blank" title="Behance">
+            <i class="fab fa-behance" style="color:#1769ff;"></i>
         </a>
     </div>
-
-    <!--- section to hold social media icons end -->
 
     <!-- Daily Math Section -->
     <section class="daily-math" id="daily-math">
@@ -1889,6 +1768,52 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tab-content" id="blogs">
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-blog"></i></div>
+                        <h3>Development Blogs</h3>
+                        <p>500+ articles covering various programming languages, frameworks, and best practices</p>
+                        <a href="#" class="btn">Read Blogs</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-newspaper"></i></div>
+                        <h3>Tutorials</h3>
+                        <p>Step-by-step tutorials for beginners to advanced developers</p>
+                        <a href="#" class="btn">Explore Tutorials</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Tips & Tricks</h3>
+                        <p>Useful development tips and productivity hacks for developers</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="scratch">
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-gamepad"></i></div>
+                        <h3>Educational Games</h3>
+                        <p>Fun and educational Scratch programs for learning programming concepts</p>
+                        <a href="#" class="btn">View Programs</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Coding Projects</h3>
+                        <p>Beginner-friendly coding projects to learn programming fundamentals</p>
+                        <a href="#" class="btn">Explore Projects</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <h3>Interactive Learning</h3>
+                        <p>Interactive Scratch programs that make learning to code fun and engaging</p>
+                        <a href="#" class="btn">Start Learning</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2162,8 +2087,8 @@
                     <ul>
                         <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
                         <li><a href="#daily-math"><i class="fas fa-video"></i> Math Videos</a></li>
-                        <li><a href="#"><i class="fas fa-palette"></i> Design Courses</a></li>
-                        <li><a href="#"><i class="fas fa-code"></i> Development</a></li>
+                        <li><a href="#courses"><i class="fas fa-palette"></i> Design Courses</a></li>
+                        <li><a href="#project"><i class="fas fa-code"></i> Development</a></li>
                         <li><a href="#profit-platforms"><i class="fas fa-tools"></i> Profit Platforms</a></li>
                     </ul>
                 </div>
@@ -2237,6 +2162,32 @@
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
         });
 
         // Simple animation on scroll

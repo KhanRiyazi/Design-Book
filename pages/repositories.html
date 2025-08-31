@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Learning Hub - Learn by Doing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        :root {
+            --github-black: #0d1117;
+            --github-gray: #161b22;
+            --github-dark-gray: #21262d;
+            --github-border: #30363d;
+            --github-text: #c9d1d9;
+            --github-blue: #58a6ff;
+            --github-green: #3fb950;
+            --github-purple: #6e5494;
+            --github-orange: #db6d28;
+            --github-pink: #db61a2;
+            --github-white: #f0f6fc;
+        }
+
+        body {
+            background-color: var(--github-black);
+            color: var(--github-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--github-gray);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--github-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--github-white);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--github-purple);
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--github-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--github-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            background: linear-gradient(to bottom, var(--github-gray), var(--github-black));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2358a6ff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--github-blue), var(--github-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--github-text);
+            font-size: 1.2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--github-purple);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a4480;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--github-dark-gray);
+            color: var(--github-text);
+            border-color: var(--github-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--github-blue);
+            border-color: var(--github-blue);
+        }
+
+        .btn-outline:hover {
+            background: rgba(88, 166, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--github-white);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--github-text);
+            font-size: 1.1rem;
+        }
+
+        /* Search and Filter */
+        .search-filter {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--github-gray);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 0.5rem;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: var(--github-text);
+            padding: 0.5rem;
+            width: 100%;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--github-gray);
+            border: 1px solid var(--github-border);
+            color: var(--github-text);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .filter-btn.active {
+            background: var(--github-purple);
+            border-color: var(--github-purple);
+            color: white;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--github-dark-gray);
+            border: 1px solid var(--github-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--github-blue);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid var(--github-border);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--github-white);
+        }
+
+        .project-description {
+            color: var(--github-text);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .language {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .language-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--github-blue);
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .project-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .technology-tag {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--github-blue);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+
+        /* Learning Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: var(--github-dark-gray);
+            border: 1px solid var(--github-border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--github-blue);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--github-blue);
+            margin-bottom: 1rem;
+        }
+
+        .resource-title {
+            font-size: 1.3rem;
+            color: var(--github-white);
+            margin-bottom: 1rem;
+        }
+
+        .resource-description {
+            color: var(--github-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-links {
+            list-style: none;
+        }
+
+        .resource-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .resource-links a {
+            color: var(--github-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .resource-links a:hover {
+            color: var(--github-white);
+            text-decoration: underline;
+        }
+
+        /* Learning Path */
+        .learning-path {
+            background: var(--github-gray);
+        }
+
+        .path-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .path-item {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .path-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 1.1rem;
+            top: 2.5rem;
+            bottom: -2.5rem;
+            width: 2px;
+            background: var(--github-border);
+        }
+
+        .path-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--github-purple);
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .path-content {
+            flex-grow: 1;
+        }
+
+        .path-content h3 {
+            color: var(--github-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .path-content p {
+            color: var(--github-text);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--github-gray);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--github-border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--github-white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--github-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--github-white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--github-dark-gray);
+            color: var(--github-text);
+            transition: all 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--github-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--github-border);
+            color: var(--github-text);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .projects-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .path-item:after {
+                display: none;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .search-filter {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .project-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .resource-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub Learning Hub</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#path">Learning Path</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Learn GitHub by Doing</h1>
+            <p>A hands-on approach to mastering Git and GitHub through practical projects and real-world scenarios.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Explore Projects</a>
+                <a href="https://github.com" target="_blank" class="btn btn-secondary">Visit GitHub</a>
+                <a href="#resources" class="btn btn-outline">Learning Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Learning Projects</h2>
+                <p>Hands-on projects designed to teach GitHub concepts through practical application</p>
+            </div>
+
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search projects...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Beginner</button>
+                    <button class="filter-btn">Intermediate</button>
+                    <button class="filter-btn">Advanced</button>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>GitHub Learning Resources</h2>
+                <p>Curated resources to help you master Git, GitHub, and collaborative development</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="resource-title">GitHub Learning Lab</h3>
+                    <p class="resource-description">Learn GitHub through interactive, project-based courses without
+                        leaving GitHub.</p>
+                    <ul class="resource-links">
+                        <li><a href="https://lab.github.com/" target="_blank"><i class="fas fa-external-link-alt"></i>
+                                GitHub Learning Lab</a></li>
+                        <li><a href="https://github.com/skills" target="_blank"><i class="fab fa-github"></i> GitHub
+                                Skills</a></li>
+                        <li><a href="https://docs.github.com/en/get-started/quickstart/hello-world" target="_blank"><i
+                                    class="fas fa-book"></i> Hello World Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="resource-title">Documentation</h3>
+                    <p class="resource-description">Official documentation for all GitHub features and services.</p>
+                    <ul class="resource-links">
+                        <li><a href="https://docs.github.com/en" target="_blank"><i class="fas fa-file-alt"></i> GitHub
+                                Docs</a></li>
+                        <li><a href="https://git-scm.com/doc" target="_blank"><i class="fas fa-book"></i> Git
+                                Documentation</a></li>
+                        <li><a href="https://docs.github.com/en/pages" target="_blank"><i
+                                    class="fas fa-laptop-code"></i> GitHub Pages Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="resource-title">Video Tutorials</h3>
+                    <p class="resource-description">Watch video tutorials to master GitHub features and workflows.</p>
+                    <ul class="resource-links">
+                        <li><a href="https://www.youtube.com/github" target="_blank"><i class="fab fa-youtube"></i>
+                                GitHub YouTube</a></li>
+                        <li><a href="https://www.youtube.com/playlist?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-"
+                                target="_blank"><i class="fas fa-play-circle"></i> GitHub Beginners</a></li>
+                        <li><a href="https://www.youtube.com/playlist?list=PL0lo9MOBetEHhfG9vJzVCTiDYcbhAiEqL"
+                                target="_blank"><i class="fas fa-code-branch"></i> GitHub Actions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="path" class="learning-path">
+        <div class="container">
+            <div class="section-header">
+                <h2>GitHub Learning Path</h2>
+                <p>A structured approach to becoming a Git and GitHub expert</p>
+            </div>
+
+            <div class="path-container">
+                <div class="path-item">
+                    <div class="path-number">1</div>
+                    <div class="path-content">
+                        <h3>Git Fundamentals</h3>
+                        <p>Learn the basics of version control, Git commands, and workflow</p>
+                        <ul class="resource-links">
+                            <li><a href="https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F"
+                                    target="_blank">What is Git?</a></li>
+                            <li><a href="https://github.com/git-guides" target="_blank">Git Guides</a></li>
+                            <li><a href="https://try.github.io" target="_blank">Try Git</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="path-item">
+                    <div class="path-number">2</div>
+                    <div class="path-content">
+                        <h3>GitHub Essentials</h3>
+                        <p>Master the GitHub platform and its core features</p>
+                        <ul class="resource-links">
+                            <li><a href="https://docs.github.com/en/get-started/quickstart/create-a-repo"
+                                    target="_blank">Creating Repositories</a></li>
+                            <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+                                    target="_blank">Pull Requests</a></li>
+                            <li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues"
+                                    target="_blank">Issues</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="path-item">
+                    <div class="path-number">3</div>
+                    <div class="path-content">
+                        <h3>Collaboration Workflows</h3>
+                        <p>Learn how to effectively collaborate on projects</p>
+                        <ul class="resource-links">
+                            <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests"
+                                    target="_blank">Collaborating with PRs</a></li>
+                            <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews"
+                                    target="_blank">Code Reviews</a></li>
+                            <li><a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository"
+                                    target="_blank">Branch Management</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="path-item">
+                    <div class="path-number">4</div>
+                    <div class="path-content">
+                        <h3>Advanced Techniques</h3>
+                        <p>Master advanced Git concepts for complex scenarios</p>
+                        <ul class="resource-links">
+                            <li><a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing"
+                                    target="_blank">Rebasing</a></li>
+                            <li><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks" target="_blank">Git
+                                    Hooks</a></li>
+                            <li><a href="https://git-scm.com/docs/git-bisect" target="_blank">Git Bisect</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="community">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GitHub Learning Hub</h3>
+                    <p>Your guide to mastering Git and GitHub through hands-on projects and practical learning.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#projects">Learning Projects</a></li>
+                        <li><a href="#resources">GitHub Resources</a></li>
+                        <li><a href="#path">Learning Path</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>External Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com">GitHub</a></li>
+                        <li><a href="https://git-scm.com">Git</a></li>
+                        <li><a href="https://education.github.com">GitHub Education</a></li>
+                        <li><a href="https://lab.github.com">GitHub Learning Lab</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.community">GitHub Community</a></li>
+                        <li><a href="https://stackoverflow.com/questions/tagged/git">Stack Overflow</a></li>
+                        <li><a href="https://www.reddit.com/r/git">r/git</a></li>
+                        <li><a href="https://www.reddit.com/r/github">r/github</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 GitHub Learning Hub. This is a learning resource site. All trademarks are property of
+                    their respective owners.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced project data with learning focus
+        const projects = [
+            {
+                title: "Git Practice Repository",
+                description: "A dedicated repository for practicing Git commands and workflows with guided exercises.",
+                technologies: ["Git", "Markdown", "Beginner"],
+                demoUrl: "#",
+                codeUrl: "https://github.com/KhanRiyazi/git-practice",
+                language: "Markdown",
+                stars: 128,
+                forks: 45,
+                level: "Beginner",
+                imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
+            },
+            {
+                title: "GitHub Actions Workshop",
+                description: "Learn GitHub Actions through practical examples and automated workflows.",
+                technologies: ["GitHub Actions", "YAML", "CI/CD", "Intermediate"],
+                demoUrl: "#",
+                codeUrl: "https://github.com/KhanRiyazi/github-actions-workshop",
+                language: "YAML",
+                stars: 89,
+                forks: 32,
+                level: "Intermediate",
+                imageUrl: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
+            },
+            {
+                title: "Collaboration Practice",
+                description: "A project designed to practice collaboration workflows including forks, PRs, and code reviews.",
+                technologies: ["GitHub", "Collaboration", "Pull Requests", "Beginner"],
+                demoUrl: "#",
+                codeUrl: "https://github.com/KhanRiyazi/collaboration-practice",
+                language: "JavaScript",
+                stars: 216,
+                forks: 78,
+                level: "Beginner",
+                imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
+            },
+            {
+                title: "Portfolio Website with GitHub Pages",
+                description: "Learn how to deploy a portfolio website using GitHub Pages with custom domain.",
+                technologies: ["HTML", "CSS", "JavaScript", "GitHub Pages", "Beginner"],
+                demoUrl: "https://khanriyazi.github.io/Design-Book/",
+                codeUrl: "https://github.com/KhanRiyazi/Design-Book",
+                language: "HTML",
+                stars: 74,
+                forks: 18,
+                level: "Beginner",
+                imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
+            },
+            {
+                title: "Open Source Contribution Guide",
+                description: "A comprehensive guide to contributing to open source projects on GitHub.",
+                technologies: ["Open Source", "GitHub", "Documentation", "Intermediate"],
+                demoUrl: "#",
+                codeUrl: "https://github.com/KhanRiyazi/open-source-guide",
+                language: "Markdown",
+                stars: 152,
+                forks: 56,
+                level: "Intermediate",
+                imageUrl: "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
+            },
+            {
+                title: "Advanced Git Techniques",
+                description: "Examples and exercises for advanced Git techniques like rebasing, cherry-picking, and more.",
+                technologies: ["Git", "Advanced", "CLI", "Expert"],
+                demoUrl: "#",
+                codeUrl: "https://github.com/KhanRiyazi/advanced-git",
+                language: "Shell",
+                stars: 103,
+                forks: 29,
+                level: "Advanced",
+                imageUrl: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
+            }
+        ];
+
+        // Function to render projects
+        function renderProjects(projectsToRender) {
+            const projectsGrid = document.getElementById('projectsGrid');
+
+            if (projectsToRender.length === 0) {
+                projectsGrid.innerHTML = `
+                    <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                        <i class="fas fa-search" style="font-size: 3rem; color: #8b949e; margin-bottom: 1rem;"></i>
+                        <h3>No projects found</h3>
+                        <p>Try adjusting your search terms or filters</p>
+                    </div>
+                `;
+                return;
+            }
+
+            projectsGrid.innerHTML = projectsToRender.map(project => `
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="${project.imageUrl}" alt="${project.title}">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        
+                        <div class="project-technologies">
+                            ${project.technologies.map(tech => `
+                                <span class="technology-tag">${tech}</span>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="project-meta">
+                            <div class="language">
+                                <span class="language-color" style="background: ${getLanguageColor(project.language)}"></span>
+                                <span>${project.language}</span>
+                            </div>
+                            <div class="project-stats">
+                                <span><i class="fas fa-star"></i> ${project.stars}</span>
+                                <span><i class="fas fa-code-branch"></i> ${project.forks}</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="${project.demoUrl}" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> View Demo
+                            </a>
+                            <a href="${project.codeUrl}" target="_blank" class="btn btn-secondary">
+                                <i class="fab fa-github"></i> Explore Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Function to get language color
+        function getLanguageColor(language) {
+            const colors = {
+                'JavaScript': '#f1e05a',
+                'TypeScript': '#2b7489',
+                'Vue': '#41b883',
+                'CSS': '#563d7c',
+                'Python': '#3572A5',
+                'HTML': '#e34c26',
+                'Markdown': '#083fa1',
+                'YAML': '#cb171e',
+                'Shell': '#89e051'
+            };
+            return colors[language] || '#58a6ff';
+        }
+
+        // Initial render
+        renderProjects(projects);
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        searchInput.addEventListener('input', () => {
+            filterProjects();
+        });
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                filterProjects();
+            });
+        });
+
+        function filterProjects() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').textContent;
+
+            const filteredProjects = projects.filter(project => {
+                const matchesSearch = searchTerm === '' ||
+                    project.title.toLowerCase().includes(searchTerm) ||
+                    project.description.toLowerCase().includes(searchTerm) ||
+                    project.technologies.some(tech => tech.toLowerCase().includes(searchTerm));
+
+                const matchesFilter = activeFilter === 'All' ||
+                    project.level === activeFilter ||
+                    project.technologies.includes(activeFilter);
+
+                return matchesSearch && matchesFilter;
+            });
+
+            renderProjects(filteredProjects);
+        }
+    </script>
+</body>
+
+</html>
